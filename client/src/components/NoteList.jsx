@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, Outlet, useLoaderData, useParams, useSubmit, useNavigate } from "react-router-dom";
 import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined';
 import moment from 'moment';
+
 export default function NoteList() {
     const { noteId, folderId } = useParams();
     const [ activeNoteId, setActiveNoteId ] = useState(noteId);

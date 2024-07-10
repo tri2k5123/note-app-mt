@@ -1,5 +1,4 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, TextField, Tooltip } from "@mui/material";
-// import { CreateNewFolderOutLined } from '@mui/icons-material';
 import CreateNewFolderOutlinedIcon from '@mui/icons-material/CreateNewFolderOutlined';
 import { useEffect, useState } from "react";
 import { addNewFolder } from "../utils/folderUtils";
@@ -19,7 +18,6 @@ export default function NewFolder() {
     }
 
     const handleClose = () => {
-        // setOpen(false)
         setNewFolderName('');
         navigate(-1)
     }
