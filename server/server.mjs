@@ -29,7 +29,7 @@ const wsServer = new WebSocketServer({
   server: httpServer,
   // Pass a different path here if app.use
   // serves expressMiddleware at a different path
-  path: '/',
+  path: '/graphql',
 });
 
 // Hand in the schema we just created and have the
@@ -64,12 +64,10 @@ const AuthorizationJWT = async (req, res, next) => {
 
     getAuth().verifyIdToken(accessToken)
       .then(decodedToken => {
-        // console.log(decodedToken);
         res.locals.uid = decodedToken.uid;
         next();
       })
       .catch(err => {
-        console.log(err);
         return res.status(403).json({ message: 'Forbiden', error: err });
       })
 
@@ -86,6 +84,7 @@ app.use(cors(), AuthorizationJWT, bodyParser.json(), expressMiddleware(server, {
 }));
 
 // connect DB
+mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true

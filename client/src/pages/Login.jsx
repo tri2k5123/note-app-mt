@@ -26,11 +26,8 @@ export default function Login() {
                 name: displayName
             }
         })
-        console.log('register data', { data });
-        console.log('register user', { user });
     }
     if(localStorage.accessToken) {
-        // navigation('/')
         return <Navigate to='/'/>
     }
     return (
